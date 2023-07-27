@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MarkdownService } from 'src/app/service/markdown.service';
 
 @Component({
   selector: 'app-left',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftComponent implements OnInit {
 
-  constructor() { }
+  constructor(private markdown: MarkdownService) { }
+
+  test!: string;
 
   ngOnInit(): void {
+
   }
 
 

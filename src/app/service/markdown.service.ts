@@ -6,14 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class MarkdownService {
 
+  text!: string;
+
   constructor(private http: HttpClient) { }
 
   src: string = "./assets/post/2023/07/17/test1.md";
 
   getMarkdownText(src: string){
-    this.http.get(src, {responseType: 'text'}).subscribe(t => {
-      
-    });
+    return this.http.get(src, {responseType: 'text'});
+  }
+
+  parse(){
+    return this.getMarkdownText(this.src);
   }
 
 

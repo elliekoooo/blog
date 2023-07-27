@@ -4,6 +4,7 @@ import { MainComponent } from './main.component';
 import { SideModule } from '../side/side.module';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { ContentModule } from '../content/content.module';
 
 
 
@@ -11,7 +12,8 @@ import { FooterComponent } from '../footer/footer.component';
   declarations: [MainComponent, HeaderComponent, FooterComponent],
   imports: [
     CommonModule,
-    SideModule
+    SideModule,
+    ContentModule
   ]
 })
 export class MainModule { }
