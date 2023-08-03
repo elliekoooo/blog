@@ -13,7 +13,6 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.url = "20230717";
-    //this.router.url.split("/");
   }
 
 }

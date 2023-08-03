@@ -1,11 +1,11 @@
 <aside class="menu my-6">
-    <p class="menu-label">2023</p>
+    <p class="menu-label">{{ '2023' }}</p>
     <ul class="menu-list">
         <ul>
             <li>
-                <a>07</a>
-                <ul>
-                    <li><a><span class="has-text-weight-bold is-size-4">title_test</span><span class="is-size-7 is-light ml-3">0717</span></a> </li>
+                <a>{{ '08' }}</a>
+                <ul *ngFor="let d of list">
+                    <li><a><span class="has-text-weight-bold is-size-6">{{ d?.title }}</span><span class="is-size-7 is-light ml-3">{{ d?.date }}</span></a> </li>
                 </ul>            
             </li>
         </ul>
