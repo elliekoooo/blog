@@ -9,7 +9,7 @@ export class PostService {
   constructor(private http: HttpClient) {
   }
 
-  getConfigList(date: string){
+  getConfigList(){
     return this.http.get("assets/post/config.json");
   }
 }

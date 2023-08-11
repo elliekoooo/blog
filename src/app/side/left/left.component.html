@@ -1,13 +1,12 @@
 <aside class="menu my-6">
-    <p class="menu-label">{{ '2023' }}</p>
     <ul class="menu-list">
-        <ul>
+        <ul *ngFor="let d of list, let i=index">
             <li>
-                <a>{{ '08' }}</a>
-                <ul *ngFor="let d of list">
-                    <li><a><span class="has-text-weight-bold is-size-6">{{ d?.title }}</span><span class="is-size-7 is-light ml-3">{{ d?.date }}</span></a> </li>
-                </ul>            
+                <p class="is-light mr-3 small-font">{{ d?.date }}</p>
+                <a class="mx-3 my-3" (click)="navigate(d.date, i)" [ngClass]="isFocus(d.date, i)? 'is-active':''">
+                    <p class="title is-size-6">{{ d?.title }}</p>
+                </a> 
             </li>
-        </ul>
+        </ul>            
     </ul>
-</aside>
+</aside>        

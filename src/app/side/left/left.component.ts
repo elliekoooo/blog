@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/service/post.service';
-import * as fns from 'date-fns';
+import { Router } from '@angular/router';
 
-type ConfigList = {
+type Config = {
   title: string,
   date: string 
-}[];
+};
 
 @Component({
   selector: 'app-left',
@@ -13,22 +13,24 @@ type ConfigList = {
   styleUrls: ['./left.component.scss']
 })
 export class LeftComponent implements OnInit {
-  constructor(private service: PostService) { }
+  constructor(private service: PostService, private router: Router) { }
 
-  list!: ConfigList;
-  curDate: Date = new Date();
+  list!: Config[];
+  currNo: string = "";
 
   ngOnInit(): void {
-    let yyyy: string = fns.format(this.curDate, "yyyy");
-    let mm: string = fns.format(this.curDate, "MM")
-
-    this.service.getConfigList("").subscribe((c:any) => {
-      this.list = c[yyyy]?.[mm];
+    this.service.getConfigList().subscribe((list:any) => {
+      this.list = list;
     });
   }
 
-  
+  navigate(date:string, no: number): void{
+    this.currNo = [date.replace(/-/g, ""), no].join("");
+    this.router.navigate([this.currNo]);
+  }
 
-
+  isFocus(date: string, no: number): boolean{
+    return [date.replace(/-/g, ""), no].join("") == this.currNo;
+  }
 
 }

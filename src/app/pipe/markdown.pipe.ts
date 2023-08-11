@@ -27,7 +27,7 @@ export class MarkdownPipe implements PipeTransform {
       }  
     });  
     
-    console.log(text);
+    //console.log(text);
     return text;
   }
 
