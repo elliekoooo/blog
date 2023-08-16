@@ -10,10 +10,6 @@ export class PostService {
   }
 
   getConfigList(){
-    return this.http.post("/api/dir", {}).subscribe(res => {
-      //console.log("===test===")
-      //console.log(res);
-    });
-    // return this.http.get("assets/post/config.json");
+    return this.http.post("/api/dir", {dir: "../frontend/src/assets/post/2023/08/"});
   }
 }

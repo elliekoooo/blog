@@ -1,17 +1,24 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
+var fs = require('fs').promises;
 
+var content = [];
 router.post('/dir', function(req, res) {
-  //console.log(req, res);
-
-  var posts = fs.readdirSync("../frontend/src/assets/post/2023/08");
-
-  fs.readFile("../frontend/src/assets/post/2023/08/"+posts[0], "utf-8", (err, data) => {
-    console.log("===test====")
-    console.log(err, data);
+  var dir = req?.body?.dir;
+  fs.readdir(dir).then(list => {
+    list.map((post, i) => {
+      var sub = {};
+      fs.readFile(dir+post, "utf-8").then((c) => {
+        c.split("/*config*/")[0]
+          .split(/\n+/)
+          .map(cf => cf.split(":"))
+          .filter(cf => cf != "")
+          .map(c => sub[c[0]] = c[1]);
+        });
+        content[i] = sub;
+    });
   });
-  res.json("");
+  res.json(content);
 });
 
 router.get('/post', function(req, res, next) {
@@ -23,6 +30,5 @@ router.get('/post', function(req, res, next) {
     res.json({content: content});
   }
 });
-
 
 module.exports = router;

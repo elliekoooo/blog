@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/service/post.service';
 import { Router } from '@angular/router';
 
-type Config = {
+type config = {
   title: string,
-  date: string 
+  date: string,
+  author: string,
+  tag: string[]
 };
 
 @Component({
@@ -15,11 +17,13 @@ type Config = {
 export class LeftComponent implements OnInit {
   constructor(private service: PostService, private router: Router) { }
 
-  list!: Config[];
+  list!: config[];
   currNo: string = "";
 
   ngOnInit(): void {
-    this.service.getConfigList();
+    this.service.getConfigList().subscribe((res) => {
+      this.list = res as config[];
+    });
   }
 
   navigate(date:string, no: number): void{
