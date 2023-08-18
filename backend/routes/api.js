@@ -15,20 +15,12 @@ router.post('/dir', function(req, res) {
           .filter(cf => cf != "")
           .map(c => sub[c[0]] = c[1]);
         });
+        sub['fileName'] = post.substring(0,9);
         content[i] = sub;
     });
   });
+  console.log(content);
   res.json(content);
-});
-
-router.get('/post', function(req, res, next) {
-  content = 'index content received from node server';
-
-  if(!content) {
-    res.status(400).json({error: 'content is empty'});
-  } else {
-    res.json({content: content});
-  }
 });
 
 module.exports = router;

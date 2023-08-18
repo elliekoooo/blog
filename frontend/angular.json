@@ -35,7 +35,8 @@
               "node_modules/bulma/css/bulma.css"
             ],
             "scripts": [
-              "node_modules/@fortawesome/fontawesome-free/js/all.js"
+              "node_modules/@fortawesome/fontawesome-free/js/all.js",
+              "node_modules/marked/marked.min.js"
             ]
           },
           "configurations": {
@@ -110,7 +111,8 @@
               "node_modules/bulma/css/bulma.css"
             ],
             "scripts": [
-              "node_modules/@fortawesome/fontawesome-free/js/all.js"
+              "node_modules/@fortawesome/fontawesome-free/js/all.js",
+              "node_modules/marked/marked.min.js"
             ]
           }
         }

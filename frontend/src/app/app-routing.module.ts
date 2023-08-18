@@ -7,14 +7,15 @@ const routes: Routes = [
   {
     path: '', component: MainComponent, 
     children: [
-      {path: ':date/:no', component: ContentComponent},
-      {path: '**', redirectTo: '', pathMatch: 'full' }    
+      {path: ':no', component: ContentComponent},
+      {path: '**', redirectTo: 'about', pathMatch: 'full' }    
     ]
   }
 ];
 
+//FIXME remove useHash
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

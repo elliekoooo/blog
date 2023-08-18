@@ -5,7 +5,6 @@ import { SideModule } from '../side/side.module';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ContentModule } from '../content/content.module';
-import { SharedModule } from '../shared/shared.module';
 
 
 

@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarkdownService {
-
-  text!: string;
 
   constructor(private http: HttpClient) { }
 
@@ -14,8 +13,8 @@ export class MarkdownService {
     return this.http.get(src, {responseType: 'text'});
   }
 
-  parse(src: string){
-    return this.getMarkdownText("./assets/post/2023/08/202308120.md");
+  parse(fileName: string){
+    return this.getMarkdownText(environment.url+fileName+environment.ext);
   }
 
 

@@ -3,6 +3,7 @@ import { PostService } from 'src/app/service/post.service';
 import { Router } from '@angular/router';
 
 type config = {
+  fileName: string,
   title: string,
   date: string,
   author: string,
@@ -26,13 +27,13 @@ export class LeftComponent implements OnInit {
     });
   }
 
-  navigate(date:string, no: number): void{
-    this.currNo = [date.replace(/-/g, ""), no].join("/");
+  navigate(fileName: string): void{
+    this.currNo = fileName;
     this.router.navigate([this.currNo]);
   }
 
-  isFocus(date: string, no: number): boolean{
-    return [date.replace(/-/g, ""), no].join("") == this.currNo;
+  isFocus(fileName: string): boolean{
+    return fileName == this.currNo;
   }
 
 }

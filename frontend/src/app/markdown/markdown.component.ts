@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MarkdownPipe } from '../pipe/markdown.pipe';
 import { MarkdownService } from '../service/markdown.service';
 
@@ -7,18 +7,17 @@ import { MarkdownService } from '../service/markdown.service';
   templateUrl: './markdown.component.html',
   styleUrls: ['./markdown.component.scss']
 })
-export class MarkdownComponent implements OnInit {
+export class MarkdownComponent {
+
+  text!:string;
 
   @Input()
-  url!: string;
-  text!: string;
+  set src(src: string) {
+    this.service.parse(src).subscribe(text => {
+      this.text = this.pipe.transform(text.split("/*config*/")[1]) as string;
+    });
+  }
 
   constructor(private pipe : MarkdownPipe, private service: MarkdownService) { }
-
-  ngOnInit(): void {
-    this.service.parse(this.url).subscribe(text => {
-      this.text = this.pipe.transform(text) as string;
-    });    
-  }
 
 }
