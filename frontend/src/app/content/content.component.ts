@@ -12,6 +12,9 @@ export class ContentComponent implements OnInit {
   get src(){
     let url = this.router.url.split("/");
     //FIXME
+    if(url[1] == 'about'){
+      return url[1];
+    }
     let yyyy = url[1].substring(0,4);
     let mm = url[1].substring(4,6);
     return [yyyy,mm,url[1]].join("/");

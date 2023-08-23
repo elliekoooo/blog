@@ -2,9 +2,9 @@
     <ul class="menu-list">
         <ul *ngFor="let d of list, let i=index">
             <li>
-                <a class="mx-3 my-3" (click)="navigate(d.fileName)" [ngClass]="isFocus(d.fileName)? 'is-active':''">
-                    <div class="title is-size-6">{{ d?.title }}</div>
-                    <div class="tag is-light mr-3 small-font">{{ d?.date }}</div>
+                <a (click)="navigate(d.fileName)" [ngClass]="isFocus(d.fileName)? 'message is-success':''">
+                    <p class="title is-size-7">{{ d?.title }}</p>
+                    <!-- <span class="mx-1 small-font">{{ d?.date | date }}</span> -->
                 </a> 
             </li>
         </ul>            
